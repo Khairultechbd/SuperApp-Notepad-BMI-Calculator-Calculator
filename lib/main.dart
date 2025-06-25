@@ -9,7 +9,7 @@ import 'package:super_app/features/settings/presentation/screens/settings_screen
 import 'package:super_app/features/about/presentation/screens/about_screen.dart';
 import 'package:super_app/features/settings/presentation/providers/settings_provider.dart';
 import 'package:super_app/features/currency/presentation/screens/currency_screen.dart';
-
+//e
 void main() {
   runApp(
     const ProviderScope(

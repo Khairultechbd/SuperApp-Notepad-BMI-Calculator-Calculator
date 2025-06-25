@@ -6,6 +6,7 @@ import '../../../calculator/presentation/screens/calculator_screen.dart';
 import '../../../bmi/presentation/screens/bmi_screen.dart';
 import '../../../settings/presentation/screens/settings_screen.dart';
 import '../../../about/presentation/screens/about_screen.dart';
+import '../../../currency/presentation/screens/currency_screen.dart'; // ✅ NEW: Currency screen import
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const NoteLabScreen(),
     const CalculatorScreen(),
     const BMIScreen(),
+    const CurrencyScreen(), // ✅ CHANGED: Added CurrencyScreen()
     const SettingsScreen(),
   ];
 
@@ -56,6 +58,11 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.monitor_weight_outlined),
             selectedIcon: Icon(Icons.monitor_weight),
             label: 'BMI',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.currency_exchange), // ✅ FIXED: proper icon
+            selectedIcon: Icon(Icons.currency_exchange),
+            label: 'Currency',
           ),
           NavigationDestination(
             icon: Icon(Icons.settings_outlined),
@@ -99,7 +106,7 @@ class MainMenuScreen extends StatelessWidget {
             'NoteLab',
             Icons.note_alt,
             Colors.blue,
-            () => Navigator.push(
+                () => Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const NoteLabScreen()),
             ),
@@ -109,7 +116,7 @@ class MainMenuScreen extends StatelessWidget {
             'Calculator',
             Icons.calculate,
             Colors.green,
-            () => Navigator.push(
+                () => Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const CalculatorScreen()),
             ),
@@ -119,9 +126,19 @@ class MainMenuScreen extends StatelessWidget {
             'BMI Calculator',
             Icons.monitor_weight,
             Colors.orange,
-            () => Navigator.push(
+                () => Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const BMIScreen()),
+            ),
+          ),
+          _buildFeatureCard(
+            context,
+            'Currency Converter',
+            Icons.currency_exchange, // ✅ NEW: Proper icon for currency
+            Colors.purple,
+                () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CurrencyScreen()), // ✅ NEW: Navigate to currency screen
             ),
           ),
         ],
@@ -130,12 +147,12 @@ class MainMenuScreen extends StatelessWidget {
   }
 
   Widget _buildFeatureCard(
-    BuildContext context,
-    String title,
-    IconData icon,
-    Color color,
-    VoidCallback onTap,
-  ) {
+      BuildContext context,
+      String title,
+      IconData icon,
+      Color color,
+      VoidCallback onTap,
+      ) {
     return CustomCard(
       onTap: onTap,
       child: Column(
@@ -155,4 +172,4 @@ class MainMenuScreen extends StatelessWidget {
       ),
     );
   }
-} 
+}

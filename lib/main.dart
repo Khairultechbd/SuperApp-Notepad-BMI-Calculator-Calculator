@@ -8,6 +8,7 @@ import 'package:super_app/features/bmi/presentation/screens/bmi_screen.dart';
 import 'package:super_app/features/settings/presentation/screens/settings_screen.dart';
 import 'package:super_app/features/about/presentation/screens/about_screen.dart';
 import 'package:super_app/features/settings/presentation/providers/settings_provider.dart';
+import 'package:super_app/features/currency/presentation/screens/currency_screen.dart';
 
 void main() {
   runApp(
@@ -96,6 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
             selectedIcon: Icon(Icons.monitor_weight),
             label: 'BMI',
           ),
+
           NavigationDestination(
             icon: Icon(Icons.settings_outlined),
             selectedIcon: Icon(Icons.settings),
@@ -106,6 +108,11 @@ class _HomeScreenState extends State<HomeScreen> {
             selectedIcon: Icon(Icons.info),
             label: 'About',
           ),
+          // NavigationDestination(
+          //   icon: Icon(Icons.currency_exchange),
+          //   selectedIcon: Icon(Icons.money),
+          //   label: 'Currency',
+          // ),
         ],
       ),
     );
@@ -166,6 +173,16 @@ class MainMenuScreen extends StatelessWidget {
             () => Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const BMIScreen()),
+            ),
+          ),
+          _buildFeatureCard(
+            context,
+            'Currency Converter',
+            Icons.currency_exchange, // ✅ NEW: Proper icon for currency
+            Colors.purple,
+                () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CurrencyScreen()), // ✅ NEW: Navigate to currency screen
             ),
           ),
         ],

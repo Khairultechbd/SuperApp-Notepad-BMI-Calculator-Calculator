@@ -19,7 +19,7 @@ void main() {
 //gitdm
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
-//check
+//checks
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(settingsProvider);
